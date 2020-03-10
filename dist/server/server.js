@@ -6,13 +6,12 @@ const io = require("socket.io");
 const osc = require("osc");
 const PORT = 8080;
 const HOST = '192.168.50.89';
-const SELF = '192.168.50.142';
 const UDP_SEND = 3000;
 const UDP_REC = 3001;
 const app = express();
 const server = http.createServer(app);
 const socket = io(server);
-const udpPort = new osc.UDPPort({ localAddress: SELF, localPort: UDP_REC });
+const udpPort = new osc.UDPPort({ localAddress: '127.0.0.1', localPort: UDP_REC });
 udpPort.open();
 const store = {};
 const sendAndReply = (message, callback) => {
